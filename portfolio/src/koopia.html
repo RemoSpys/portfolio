@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoSpys Portfolio</title>
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    .nav-link {
+        position: relative;
+        padding-bottom: 6px; /* Adjust this value to set the gap between text and underline */
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0; /* Start with no width */
+        height: 3px; /* Adjust this value to increase the thickness of the underline */
+        background-color: transparent;
+        border-radius: 10px; /* Adjust this value to increase the roundness of the edges */
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+        width: 100%; /* Expand the width to 100% on hover */
+        background-color: white;
+    }
+</style>
+</head>
+<body>
+  
+  <div class="relative">
+    <img src="/src/image/sunset.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
+    
+<!-- Text overlay using Tailwind CSS classes -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10">
+        <div id="typing-container" style="font-size: 6em; ">
+            <h1 id="typing-text"></h1>
+          </div>
+    </div>
+
+    <header class="bg-white bg-opacity-0 relative z-10">
+
+        
+        <nav class="bg-gray-800 bg-opacity-0 text-white p-4 fixed top-0 w-full z-10 transition duration-300 ease-in-out">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-white text-xl font-bold">Remo</a>
+                <div class="flex space-x-4">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Projects</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+        
+
+         
+         
+    </header>
+
+     <!-- Centered content -->
+    <div class="flex items-center justify-center h-screen bg-gray-800 text-white">
+    </div>
+
+</div>
+
+
+<!-- Navbar-like bar -->
+<div class="bg-white bg-opacity-50 text-center py-4 w-full z-10 absolute">
+    <span class="text-gray-900 text-xl font-semibold">Centered Text</span>
+</div>
+
+<!-- Content with six larger boxes -->
+<div class="font-sans bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('/src/image/sunset.jpg');">
+    <div class="flex items-center justify-center h-screen">
+        <div class="grid grid-cols-3 gap-8 text-center text-white">
+            <div class="relative">
+                <!-- Image on top of Box 1 -->
+                <img src="/src/image/sunset.jpg" alt="Example Image" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
+                <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg relative z-10">
+                    <h1 class="text-4xl">Box 1</h1>
+                    <p>Write something here...</p>
+                </div>
+            </div>
+            <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg">
+                <h1 class="text-4xl">Box 2</h1>
+                <p>Write something here...</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg">
+                <h1 class="text-4xl">Box 3</h1>
+                <p>Write something here...</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg">
+                <h1 class="text-4xl">Box 4</h1>
+                <p>Write something here...</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg">
+                <h1 class="text-4xl">Box 5</h1>
+                <p>Write something here...</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-50 p-12 rounded-lg">
+                <h1 class="text-4xl">Box 6</h1>
+                <p>Write something here...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Navbar-like bar -->
+<div class="bg-black bg-opacity-30 text-center py-4 w-full z-10 absolute">
+<span class="text-white text-xl font-semibold">Server Status</span>
+</div>
+
+<!-- Content -->
+<div class="font-sans bg-cover bg-center bg-no-repeat h-screen"
+    style="background-image: url('/src/image/sunset.jpg');">
+    <div class="flex items-center justify-center h-screen">
+        <div class="text-center text-white">
+            <h1 class="text-4xl">lorem</h1>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const words = ["Developer", "Coder"];
+      const typingText = document.getElementById("typing-text");
+      let index = 0;
+      let wordIndex = 0;
+      let currentWord = words[wordIndex];
+      
+      function type() {
+        if (index < currentWord.length) {
+          typingText.textContent = currentWord.substring(0, index + 1) + "|";
+          index++;
+          setTimeout(type, 200);
+        } else {
+          setTimeout(erase, 1000);
+        }
+      }
+      
+      function erase() {
+        if (index >= 0) {
+          typingText.textContent = currentWord.substring(0, index) + "|";
+          index--;
+          setTimeout(erase, 100);
+        } else {
+          wordIndex = (wordIndex + 1) % words.length;
+          currentWord = words[wordIndex];
+          setTimeout(type, 500);
+        }
+      }
+
+      setTimeout(type, 500);
+    });
+  </script>
+</body>
+</html> 
