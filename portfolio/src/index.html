@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RemoSpys Portfolio</title>
+  <!-- Lisa Open Sans fontidele viited -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="./output.css" rel="stylesheet">
   <style>
     /* Custom styles */
@@ -34,6 +36,18 @@
       /* Expand the width to 100% on hover */
       background-color: white;
     }
+
+    /* Määra Open Sans font tekstidele */
+    body, button, input, select, textarea {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Lisa stiil mobiilivaate jaoks */
+    @media screen and (max-width: 600px) {
+      #typing-container {
+        font-size: 0.5em; /* Vähenda teksti suurust mobiilivaates */
+      }
+    }
   </style>
 </head>
 
@@ -44,7 +58,7 @@
     <img src="/src/image/dark-city-7ws46k7xo1gcptjo.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
 
     <!-- Text overlay using Tailwind CSS classes -->
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10" id="typing-container">
       <div id="typing-container" style="font-size: 6em;">
         <h1 id="typing-text"></h1>
       </div>
@@ -97,90 +111,20 @@
       }
 
       setTimeout(type, 500);
-
-      // JavaScript for scrolling slowly to About section when button is clicked
-      const homeButton = document.getElementById('homeButton');
-      const aboutButton = document.getElementById('aboutButton');
-      const projectsButton = document.getElementById('projectsButton');
-      const contactButton = document.getElementById('contactButton');
-      const aboutSection = document.getElementById('about');
-
-      homeButton.addEventListener('click', function () {
-        const currentY = window.pageYOffset;
-        if (currentY > aboutSection.offsetTop) {
-          scrollSmoothToHome();
-        } else {
-          window.scrollTo(0, 0);
-        }
-      });
-
-      aboutButton.addEventListener('click', function () {
-        scrollSmoothToAbout();
-      });
-
-      projectsButton.addEventListener('click', function () {
-        // Your logic for scrolling to Projects section
-      });
-
-      contactButton.addEventListener('click', function () {
-        // Your logic for scrolling to Contact section
-      });
-
-      function scrollSmoothToAbout() {
-        const bodyRect = document.body.getBoundingClientRect();
-        const elemRect = aboutSection.getBoundingClientRect();
-        const offset = elemRect.top - bodyRect.top;
-        const start = window.pageYOffset;
-        const duration = 1000;
-        let startTime = null;
-
-        function scrollAnimation(currentTime) {
-          if (startTime === null) startTime = currentTime;
-          const timeElapsed = currentTime - startTime;
-          const scrollY = easeInOutQuad(timeElapsed, start, offset, duration);
-          window.scrollTo(0, scrollY);
-          if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
-        }
-
-        function easeInOutQuad(t, b, c, d) {
-          t /= d / 2;
-          if (t < 1) return c / 2 * t * t + b;
-          t--;
-          return -c / 2 * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(scrollAnimation);
-      }
-
-      function scrollSmoothToHome() {
-        const start = window.pageYOffset;
-        const duration = 1000;
-        let startTime = null;
-
-        function scrollAnimation(currentTime) {
-          if (startTime === null) startTime = currentTime;
-          const timeElapsed = currentTime - startTime;
-          const scrollY = easeInOutQuad(timeElapsed, start, -start, duration);
-          window.scrollTo(0, scrollY);
-          if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
-        }
-
-        function easeInOutQuad(t, b, c, d) {
-          t /= d / 2;
-          if (t < 1) return c / 2 * t * t + b;
-          t--;
-          return -c / 2 * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(scrollAnimation);
-      }
     });
   </script>
 
+
   <div class="flex justify-center font-bold text-4xl">
-    <h1>About</h1>
+    <h1>LET ME <span style="color: rgb(125, 128, 165);">INTRODUCE</span> MYSELF</h1>
   </div>
 
+  <div>
+  <div class="flex justify-center"><h1>I like programming and I have at least learnt something, I think... 🤷‍♂️</h1></div>
+  <div class="flex justify-center"><h1>I am fluent in classics like <span class="font-bold" style="color: rgb(125, 128, 165);">HTML, Tailwind CSS, Python, and Java.</span></h1></div>
+  <div class="flex justify-center"><h1>My fields of interest include <span class="font-bold" style="color: rgb(125, 128, 165);">building servers for various games</span>, <span class="font-bold" style="color: rgb(125, 128, 165);">creating quality websites</span>, and more.</h1></div>
+  <div class="flex justify-center"><h1>Whenever possible, I also apply my passion for developing products with <span class="font-bold" style="color: rgb(125, 128, 165);">Node.js</span> and <span class="font-bold" style="color: rgb(125, 128, 165);">Modern Javascript Library and Frameworks</span>  like <span class="font-bold" style="color: rgb(125, 128, 165);">React.js</span></h1></div>
+</div>
   <div class="flex flex-col items-center justify-center">
     <div class="max-w-screen-md w-full">
       <div class="flex flex-wrap justify-center">
@@ -201,6 +145,4 @@
   </div>
   
 
-</body>
-
-</html>
+</body
