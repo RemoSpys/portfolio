@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,62 +9,71 @@
   <style>
     /* Custom styles */
     .nav-link {
-        position: relative;
-        padding-bottom: 6px; /* Adjust this value to set the gap between text and underline */
+      position: relative;
+      padding-bottom: 6px;
+      /* Adjust this value to set the gap between text and underline */
     }
+
     .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0; /* Start with no width */
-        height: 3px; /* Adjust this value to increase the thickness of the underline */
-        background-color: transparent;
-        border-radius: 10px; /* Adjust this value to increase the roundness of the edges */
-        transition: width 0.3s ease;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      /* Start with no width */
+      height: 3px;
+      /* Adjust this value to increase the thickness of the underline */
+      background-color: transparent;
+      border-radius: 10px;
+      /* Adjust this value to increase the roundness of the edges */
+      transition: width 0.3s ease;
     }
+
     .nav-link:hover::after {
-        width: 100%; /* Expand the width to 100% on hover */
-        background-color: white;
+      width: 100%;
+      /* Expand the width to 100% on hover */
+      background-color: white;
     }
-</style>
+  </style>
 </head>
-<body>
-  
+
+<body class="bg-black text-white">
+
   <div class="relative h-screen">
     <!-- Image centered and on top -->
-    <img src="/src/image/sunset.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
-    
+    <img src="/src/image/dark-city-7ws46k7xo1gcptjo.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
+
     <!-- Text overlay using Tailwind CSS classes -->
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10">
-        <div id="typing-container" style="font-size: 6em;">
-            <h1 id="typing-text"></h1>
-        </div>
+      <div id="typing-container" style="font-size: 6em;">
+        <h1 id="typing-text"></h1>
+      </div>
     </div>
   </div>
 
   <header class="bg-white bg-opacity-0 relative z-10">
     <nav class="bg-gray-800 bg-opacity-0 text-white p-4 fixed top-0 w-full z-10 transition duration-300 ease-in-out">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-xl font-bold">Remo</a>
-            <div class="flex space-x-4">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Projects</a>
-                <a href="#" class="nav-link">Contact</a>
-            </div>
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-white text-xl font-bold">Remo</a>
+        <div class="flex space-x-4">
+          <button id="homeButton" class="nav-link">Home</button>
+          <button id="aboutButton" class="nav-link">About</button>
+          <button id="projectsButton" class="nav-link">Projects</button>
+          <button id="contactButton" class="nav-link">Contact</button>
         </div>
+      </div>
     </nav>
   </header>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const words = ["Developer", "Coder"];
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const words = ["Developer", "Coder", "Game Developer", "Visual Developer", "FiveM Developer", "Rust Developer", "DayZ Developer"];
       const typingText = document.getElementById("typing-text");
       let index = 0;
       let wordIndex = 0;
       let currentWord = words[wordIndex];
-      
+
+
       function type() {
         if (index < currentWord.length) {
           typingText.textContent = currentWord.substring(0, index + 1) + "|";
@@ -73,7 +83,7 @@
           setTimeout(erase, 1000);
         }
       }
-      
+
       function erase() {
         if (index >= 0) {
           typingText.textContent = currentWord.substring(0, index) + "|";
@@ -87,7 +97,110 @@
       }
 
       setTimeout(type, 500);
+
+      // JavaScript for scrolling slowly to About section when button is clicked
+      const homeButton = document.getElementById('homeButton');
+      const aboutButton = document.getElementById('aboutButton');
+      const projectsButton = document.getElementById('projectsButton');
+      const contactButton = document.getElementById('contactButton');
+      const aboutSection = document.getElementById('about');
+
+      homeButton.addEventListener('click', function () {
+        const currentY = window.pageYOffset;
+        if (currentY > aboutSection.offsetTop) {
+          scrollSmoothToHome();
+        } else {
+          window.scrollTo(0, 0);
+        }
+      });
+
+      aboutButton.addEventListener('click', function () {
+        scrollSmoothToAbout();
+      });
+
+      projectsButton.addEventListener('click', function () {
+        // Your logic for scrolling to Projects section
+      });
+
+      contactButton.addEventListener('click', function () {
+        // Your logic for scrolling to Contact section
+      });
+
+      function scrollSmoothToAbout() {
+        const bodyRect = document.body.getBoundingClientRect();
+        const elemRect = aboutSection.getBoundingClientRect();
+        const offset = elemRect.top - bodyRect.top;
+        const start = window.pageYOffset;
+        const duration = 1000;
+        let startTime = null;
+
+        function scrollAnimation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const scrollY = easeInOutQuad(timeElapsed, start, offset, duration);
+          window.scrollTo(0, scrollY);
+          if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(scrollAnimation);
+      }
+
+      function scrollSmoothToHome() {
+        const start = window.pageYOffset;
+        const duration = 1000;
+        let startTime = null;
+
+        function scrollAnimation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const scrollY = easeInOutQuad(timeElapsed, start, -start, duration);
+          window.scrollTo(0, scrollY);
+          if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(scrollAnimation);
+      }
     });
   </script>
+
+  <div class="flex justify-center font-bold text-4xl">
+    <h1>About</h1>
+  </div>
+
+  <div class="flex flex-col items-center justify-center">
+    <div class="max-w-screen-md w-full">
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full sm:w-1/2 md:w-1/4 p-4">
+          <img src="image/sunset.jpg" alt="Image 1" class="w-56 h-56 mx-auto mb-2">
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
+          <img src="image/sunset.jpg" alt="Image 2" class="w-56 h-56 mx-auto mb-2">
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
+          <img src="image/sunset.jpg" alt="Image 3" class="w-56 h-56 mx-auto mb-2">
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
+          <img src="image/sunset.jpg" alt="Image 4" class="w-56 h-56 mx-auto mb-2">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 </body>
+
 </html>
