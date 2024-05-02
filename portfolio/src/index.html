@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RemoSpys Portfolio</title>
-  <!-- Lisa Open Sans fontidele viited -->
+  <!-- Add references to Open Sans fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="./output.css" rel="stylesheet">
   <style>
@@ -37,15 +37,20 @@
       background-color: white;
     }
 
-    /* Määra Open Sans font tekstidele */
-    body, button, input, select, textarea {
+    /* Set Open Sans font for text */
+    body,
+    button,
+    input,
+    select,
+    textarea {
       font-family: 'Open Sans', sans-serif;
     }
 
-    /* Lisa stiil mobiilivaate jaoks */
+    /* Add style for mobile view */
     @media screen and (max-width: 600px) {
       #typing-container {
-        font-size: 0.5em; /* Vähenda teksti suurust mobiilivaates */
+        font-size: 0.5em;
+        /* Decrease text size in mobile view */
       }
     }
   </style>
@@ -58,7 +63,8 @@
     <img src="/src/image/dark-city-7ws46k7xo1gcptjo.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
 
     <!-- Text overlay using Tailwind CSS classes -->
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10" id="typing-container">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10"
+      id="typing-container">
       <div id="typing-container" style="font-size: 6em;">
         <h1 id="typing-text"></h1>
       </div>
@@ -68,20 +74,22 @@
   <header class="bg-white bg-opacity-0 relative z-10">
     <nav class="bg-gray-800 bg-opacity-0 text-white p-4 fixed top-0 w-full z-10 transition duration-300 ease-in-out">
       <div class="container mx-auto flex justify-between items-center">
-        <a href="#" class="text-white text-xl font-bold">Remo</a>
+        <a href="#" class="text-white text-xl font-bold hidden md:block">Remo</a> <!-- Hide on mobile -->
         <div class="flex space-x-4">
-          <button id="homeButton" class="nav-link">Home</button>
-          <button id="aboutButton" class="nav-link">About</button>
-          <button id="projectsButton" class="nav-link">GitHub</button>
+          <button id="homeButton" class="nav-link" onclick="scrollToTop()">Home</button>
+          <button id="aboutButton" class="nav-link" onclick="scrollToAbout()">About</button>
+          <button id="projectsButton" class="nav-link"
+            onclick="window.location.href='https://github.com/RemoSpys'">GitHub</button>
           <button id="contactButton" class="nav-link">Contact</button>
         </div>
       </div>
     </nav>
   </header>
 
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const words = ["Developer", "Coder", "Game Developer", "Visual Developer", "FiveM Developer", "Rust Developer", "DayZ Developer Kätlin on pede"];
+      const words = ["Developer", "Coder", "Game Developer", "Visual Developer", "FiveM Developer", "Rust Developer", "DayZ Developer"];
       const typingText = document.getElementById("typing-text");
       let index = 0;
       let wordIndex = 0;
@@ -112,38 +120,73 @@
 
       setTimeout(type, 500);
     });
+
+    // JavaScript function to scroll to the about section
+    function scrollToAbout() {
+      const aboutSection = document.getElementById("about-section");
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // JavaScript function to scroll to the top of the page
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 
-
-  <div class="flex justify-center font-bold text-4xl p-12">
+  <div class="flex justify-center font-bold text-4xl p-6 md:p-12">
     <h1>LET ME <span style="color: rgb(125, 128, 165);">INTRODUCE</span> MYSELF</h1>
   </div>
 
-<div>
-  <div class="flex justify-center"><h1>I like programming and I have at least learnt something, I think... 🤷‍♂️</h1></div>
-  <div class="flex justify-center"><h1>At the moment im learning <span class="font-bold" style="color: rgb(125, 128, 165);">HTML, Tailwind CSS, Python, React, C++, JavaScript and Java.</span></h1></div>
-  <div class="flex justify-center"><h1>My fields of interest include <span class="font-bold" style="color: rgb(125, 128, 165);">building servers for various games</span>, <span class="font-bold" style="color: rgb(125, 128, 165);">creating quality websites</span>, and more.</h1></div>
-  <div class="flex justify-center"><h1>Whenever possible, I also apply my passion for developing products with <span class="font-bold" style="color: rgb(125, 128, 165);">Node.js</span> and <span class="font-bold" style="color: rgb(125, 128, 165);">Modern Javascript Library and Frameworks</span>  like <span class="font-bold" style="color: rgb(125, 128, 165);">React.js</span></h1></div>
-</div>
+  <div id="about-section" class="md:w-1/2 lg:w-2/3 mx-auto p-4 text-center"> <!-- Added id="about-section" here -->
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">I like programming and I have at least learnt something, I
+        think... 🤷‍♂️</h1>
+    </div>
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">At the moment I'm learning <span class="font-bold"
+          style="color: rgb(125, 128, 165);">HTML, Tailwind CSS, Python, React, C++, JavaScript and Java.</span></h1>
+    </div>
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">My fields of interest include <span class="font-bold"
+          style="color: rgb(125, 128, 165);">building servers for various games</span>, <span class="font-bold"
+          style="color: rgb(125, 128, 165);">creating quality websites</span>, and more.</h1>
+    </div>
+    <div class="flex justify-center">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">Whenever possible, I also apply my passion for developing
+        products with <span class="font-bold" style="color: rgb(125, 128, 165);">Node.js</span> and <span
+          class="font-bold" style="color: rgb(125, 128, 165);">Modern Javascript Library and Frameworks</span> like
+        <span class="font-bold" style="color: rgb(125, 128, 165);">React.js</span></h1>
+    </div>
+  </div>
+
 
   <div class="flex flex-col items-center justify-center p-4">
     <div class="max-w-screen-md w-full">
       <div class="flex flex-wrap justify-center">
         <div class="w-full sm:w-1/2 md:w-1/4 p-4">
-          <img src="image/sunset.jpg" alt="Image 1" class="w-56 h-56 mx-auto mb-2">
+          <div class="border border-white rounded-lg overflow-hidden p-2">
+            <img src="image/python.png" alt="Image 1" class="w-full h-full mx-auto mb-4">
+          </div>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
-          <img src="image/sunset.jpg" alt="Image 2" class="w-56 h-56 mx-auto mb-2">
+          <div class="border border-white rounded-lg overflow-hidden p-2">
+            <img src="image/sunset.jpg" alt="Image 2" class="w-56 h-56 mx-auto mb-4">
+          </div>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
-          <img src="image/sunset.jpg" alt="Image 3" class="w-56 h-56 mx-auto mb-2">
+          <div class="border border-white rounded-lg overflow-hidden p-2">
+            <img src="image/sunset.jpg" alt="Image 3" class="w-56 h-56 mx-auto mb-4">
+          </div>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/4 p-4"> <!-- Adjusted column width to md:w-1/4 -->
-          <img src="image/sunset.jpg" alt="Image 4" class="w-56 h-56 mx-auto mb-2">
+          <div class="border border-white rounded-lg overflow-hidden p-2">
+            <img src="image/sunset.jpg" alt="Image 4" class="w-56 h-56 mx-auto mb-4">
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-</body
+</body>
+
+</html>
