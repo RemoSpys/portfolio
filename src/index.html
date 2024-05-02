@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoSpys Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    .nav-link {
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: transparent;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+      background-color: white;
+    }
+
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    @media screen and (max-width: 600px) {
+      #typing-container {
+        font-size: 0.5em;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white">
+
+  <div class="relative h-screen">
+    <img src="/src/image/dark-city-7ws46k7xo1gcptjo.jpg" alt=""
+      class="absolute inset-0 w-full h-full object-cover z-0 mb-8">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10"
+      id="typing-container">
+      <div id="typing-container" style="font-size: 6em;">
+        <h1 id="typing-text"></h1>
+      </div>
+    </div>
+  </div>
+
+  <header class="bg-white bg-opacity-0 relative z-10">
+    <nav class="bg-gray-800 bg-opacity-0 text-white p-4 fixed top-0 w-full z-10 transition duration-300 ease-in-out">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-white text-xl font-bold">Remo</a>
+        <div class="flex space-x-4">
+          <button id="homeButton" class="nav-link">Home</button>
+          <button id="projectsButton" class="nav-link"
+            onclick="window.location.href='https://github.com/RemoSpys'">GitHub</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const words = ["Developer", "Coder", "Game Developer", "Visual Developer", "FiveM Developer", "Rust Developer", "DayZ Developer"];
+      const typingText = document.getElementById("typing-text");
+      let index = 0;
+      let wordIndex = 0;
+      let currentWord = words[wordIndex];
+
+
+      function type() {
+        if (index < currentWord.length) {
+          typingText.textContent = currentWord.substring(0, index + 1) + "|";
+          index++;
+          setTimeout(type, 200);
+        } else {
+          setTimeout(erase, 1000);
+        }
+      }
+
+      function erase() {
+        if (index >= 0) {
+          typingText.textContent = currentWord.substring(0, index) + "|";
+          index--;
+          setTimeout(erase, 100);
+        } else {
+          wordIndex = (wordIndex + 1) % words.length;
+          currentWord = words[wordIndex];
+          setTimeout(type, 500);
+        }
+      }
+
+      setTimeout(type, 500);
+    });
+
+    document.getElementById('homeButton').addEventListener('click', function () {
+      scrollToTop();
+    });
+
+    function scrollToTop() {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, currentScroll - currentScroll / 8); // Adjust the division value for the scrolling speed
+      }
+    }
+
+  </script>
+
+  <div class="flex justify-center font-bold text-4xl p-6 mt-12 md:p-12">
+    <h1>LET ME <span style="color: rgb(125, 128, 165);">INTRODUCE</span> MYSELF</h1>
+  </div>
+
+  <div id="about-section" class="md:w-1/2 lg:w-2/3 mx-auto p-4 text-center"> <!-- Added id="about-section" here -->
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">I like programming and I have at least learnt something, I
+        think... 🤷‍♂️</h1>
+    </div>
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">At the moment I'm learning <span class="font-bold"
+          style="color: rgb(125, 128, 165);">HTML, Tailwind CSS, Python, React, C++, JavaScript and Java.</span></h1>
+    </div>
+    <div class="flex justify-center mb-4 md:mb-8">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">My fields of interest include <span class="font-bold"
+          style="color: rgb(125, 128, 165);">building servers for various games</span>, <span class="font-bold"
+          style="color: rgb(125, 128, 165);">creating quality websites</span>, and more.</h1>
+    </div>
+    <div class="flex justify-center">
+      <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl">Whenever possible, I also apply my passion for developing
+        products with <span class="font-bold" style="color: rgb(125, 128, 165);">Node.js</span> and <span
+          class="font-bold" style="color: rgb(125, 128, 165);">Modern Javascript Library and Frameworks</span> like
+        <span class="font-bold" style="color: rgb(125, 128, 165);">React.js</span>
+      </h1>
+    </div>
+  </div>
+
+
+  <div class="flex justify-center font-bold text-3xl p-8 mt-8">
+    <h1>Skills</h1>
+  </div>
+  <div class="flex justify-center p-5 lg:space-x-6 lg:flex-row flex-col lg:space-y-0 space-y-6 p-8">
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/python.png" alt="Python Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-javascript-144.png" alt="JavaScript Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-react-120.png" alt="React Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-tailwind-css-192.png" alt="Tailwind CSS Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-html-144.png" alt="HTML Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center font-bold text-3xl p-8 mt-8">
+    <h1>Tools I use</h1>
+  </div>
+  <div class="flex justify-center p-5 lg:space-x-6 lg:flex-row flex-col lg:space-y-0 space-y-6 p-8">
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-slack-150.png" alt="Python Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-visual-studio-150.png" alt="JavaScript Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-teams-150.png" alt="React Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-github-150.png" alt="Tailwind CSS Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+    <div class="border border-gray-500 rounded-lg overflow-hidden relative p-4 lg:grow">
+      <div>
+        <img src="image/icons8-mysql-100.png" alt="HTML Logo" class="w-24 h-auto mx-auto">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl text-center mb-6">Contact Us</h1>
+    <div class="max-w-md mx-auto shadow-md rounded px-8 pt-6 pb-8 mb-4 lg:flex lg:justify-between lg:space-x-6">
+      <div class="mb-4 lg:w-1/2">
+        <label class="block text-gray-300 text-sm font-bold mb-2" for="email">
+          Email
+        </label>
+        <p class="text-gray-300 text-lg">example@example.com</p>
+      </div>
+      <div class="mb-4 lg:w-1/2">
+        <label class="block text-gray-300 text-sm font-bold mb-2" for="phone">
+          Phone Number
+        </label>
+        <p class="text-gray-300 text-lg">123-456-7890</p>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    @media (max-width: 640px) {
+      .space-x-6 {
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+
+</body>
+
+</html>
